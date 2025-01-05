@@ -9,7 +9,7 @@ gem 'sinatra-contrib' # For JSON handling and modular structure
 
 ## App
 
-``ruby
+```ruby
 require 'sinatra'
 require 'sinatra/json'
 require 'json'
@@ -21,12 +21,14 @@ get '/healthcheck' do
 end
 
 # GET /hello endpoint
+
 get '/hello' do
   name = params[:name] || 'World'
   json message: "Hello, #{name}!"
 end
 
 # POST /do_work endpoint
+
 post '/do_work' do
   begin
     payload = JSON.parse(request.body.read)
@@ -105,12 +107,11 @@ To POST:
 curl -X POST http://localhost:4567/do_work -H "Content-Type: application/json" -d '{"work_description": "Example Task"}'
 ```
 
-
 ## Containerize
 
 Dockerfile:
 
-```
+```dockerfile
 # Use the official Ruby image
 FROM ruby:3.2
 
@@ -132,7 +133,7 @@ CMD ["ruby", "app.rb"]
 
 docker-compose.yml:
 
-```
+```dockerfile
 version: '3.8'
 
 services:
@@ -148,20 +149,20 @@ services:
 
 build and run:
 
-```
+```bash
 docker build -t sinatra-app .
 docker run -p 4567:4567 sinatra-app
 ```
 
 with docker-compose:
 
-```
+```bash
 docker-compose up --build
 ```
 
 ## Interface Tests
 
-```
+```ruby
 RSpec.describe 'Sinatra App' do
   include Rack::Test::Methods
 
@@ -200,4 +201,3 @@ RSpec.describe 'Sinatra App' do
   end
 end
 ```
-
