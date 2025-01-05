@@ -15,13 +15,13 @@ Code that is seperable tends to be simpler. That means layers and reasons to hav
 
 If I have Java, I can use plantuml.
 
-Sequence diagram:
+First install. On homebrew:
 
 ```bash
-plantuml -ttxt input.puml
+brew install plantuml
 ```
 
-Or, I can embed it like this:
+Then, I can embed it like this:
 
 <!--
 @startuml firstDiagram
@@ -33,3 +33,11 @@ Bob -> Alice: Hi!
 -->
 
 ![](firstDiagram.svg)
+
+Then, generate the diagram:
+
+```bash
+plantuml -tsvg testing/quality.md
+```
+
+Finally, push to Github and the diagram is ready.
