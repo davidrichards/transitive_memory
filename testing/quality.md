@@ -17,28 +17,19 @@ If I have Java, I can use plantuml.
 
 Sequence diagram:
 
-```uml
-@startuml
-Alice -> Bob: Hello
-Bob -> Alice: Hi
-@enduml
-```
-
 ```bash
 plantuml -ttxt input.puml
 ```
 
 Or, I can embed it like this:
 
-<div hidden>
-```
+<!--
 @startuml firstDiagram
 
 Alice -> Bob: Hello
 Bob -> Alice: Hi!
-		
+	
 @enduml
-```
-</div>
+-->
 
 ![](firstDiagram.svg)
