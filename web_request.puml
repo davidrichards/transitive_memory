@@ -1,0 +1,26 @@
+@startuml
+title Web Request Flow Through Application Layers
+
+actor User as "User"
+participant "Web Browser" as Browser
+participant "Web Server" as Server
+participant "Controller Layer" as Controller
+participant "Service Layer" as Service
+participant "Data Access Layer" as DataAccess
+database "Database" as DB
+
+User -> Browser: Makes HTTP Request
+Browser -> Server: Sends HTTP Request
+Server -> Controller: Routes Request
+Controller -> Service: Passes Request Data
+Service -> DataAccess: Queries for Data
+DataAccess -> DB: Fetches/Updates Data
+DB --> DataAccess: Returns Data
+DataAccess --> Service: Returns Processed Data
+Service --> Controller: Returns Business Response
+Controller --> Server: Sends Response to Web Server
+Server --> Browser: Sends HTTP Response
+Browser --> User: Renders Response to User
+
+@enduml
+
